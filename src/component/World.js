@@ -1,6 +1,7 @@
 export default function world(){
 
-    return
-        <h3>world</h3>;
+    return(
+        <h2>world!</h2>
+    );
    
 };
