@@ -1,35 +1,42 @@
-import World from './World';
-import styles from './Hello.module.css';
+//import World from './World';
+//import styles from './Hello.module.css';
 
-export default function Hello(){
+import { useState } from "react";
 
-    function showName(){
-        console.log("Mike");
+export default function Hello(props){
+    //let name= "Mike";
+
+    const [name, setName]=useState('Mike');
+    const [age, setAge]=useState(props.age);
+    const msg =age > 19? "성인입니다":"미성년입니다";
+  
+
+    function changeName(){
+
+        const newName=name==="Mike" ? "Jane": "Mike";
+
+        console.log(name);
+       // document.getElementById("name").innerText= name;
+        setName(newName);
+        setAge(age+1);
+
     }
-
- 
     
     return (
         <div>
         <h1>Hello</h1>
-        <World />
         
-        <div className={styles.box}>world</div>
-        <button onClick={showName}>showName</button>
-        <button onClick={()=>{
-            console.log("10");
-        }}>showAge</button>
+           
+            
 
-        <input type="text" onChange={e =>{
-            const txt= e.target.value;
-            showTxt(txt);
-        }}></input>
+            <h2 id="name">{name}({age})::{msg}</h2>
+            <button onClick={changeName}>Change</button>
+           
+
         </div>
+     
     );
-        function showTxt(txt){
-
-            console.log(txt);
-        }
+      
   
 
 }
